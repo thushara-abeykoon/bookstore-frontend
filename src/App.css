@@ -1,0 +1,21 @@
+@Layer components {
+    .navigation-list-item {
+        /* background-color: black; */
+        font-weight: bold;
+        /* color: white; */
+        padding: 10px 20px;
+        border-radius: 10px;
+        text-transform: uppercase;
+        
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 10px;
+    }
+
+    .flex-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
