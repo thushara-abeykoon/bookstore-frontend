@@ -12,6 +12,7 @@
         justify-content: start;
         gap: 10px;
         cursor: pointer;
+        transition: background-color 0.15s ease;
     }
 
     .navigation-list-item-active {

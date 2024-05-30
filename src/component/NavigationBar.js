@@ -3,6 +3,7 @@ import { FaHome } from "react-icons/fa";
 import { MdSupervisorAccount } from "react-icons/md";
 import { IoBookSharp } from "react-icons/io5";
 import { useLocation, useNavigate } from 'react-router-dom';
+import { TiUserAdd } from "react-icons/ti";
 
 const NavigationBar = () => {
 
@@ -10,16 +11,16 @@ const NavigationBar = () => {
 
   const currentRoute = useLocation();
 
-  const handleNavigation = (path) => {
-    navigate(path);
-  }
+  const getNavItemClass = (path) => (
+    `navigation-list-item ${currentRoute.pathname===path?'navigation-list-item-active':'hover:bg-white hover:bg-opacity-40'}`
+  );
 
   return (
     <div className='px-3 py-16'>
         <ul className='flex flex-col gap-4'>
-            <li className={`navigation-list-item ${currentRoute.pathname==='/'?'navigation-list-item-active':''}`} onClick={() => navigate('/')}><FaHome />Home</li>
-            <li className={`navigation-list-item ${currentRoute.pathname==='/authors'?'navigation-list-item-active':''}`} onClick={() => navigate('/authors')}><MdSupervisorAccount />Authors</li>
-            <li className={`navigation-list-item ${currentRoute.pathname==='/books'?'navigation-list-item-active':''}`} onClick={() => navigate('/books')}><IoBookSharp />Books</li>
+            <li className={getNavItemClass('/')} onClick={() => navigate('/')}><FaHome />Home</li>
+            <li className={getNavItemClass('/authors')} onClick={() => navigate('/authors')}><MdSupervisorAccount />Authors</li>
+            <li className={getNavItemClass('/books')} onClick={() => navigate('/books')}><IoBookSharp />Books</li>
             <li></li>
         </ul>
     </div>
