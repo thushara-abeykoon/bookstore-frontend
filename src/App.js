@@ -4,6 +4,7 @@ import Dashboard from './component/Dashboard';
 import SideBar from './component/SideBar';
 import Authors from './component/Authors';
 import Books from './component/Books';
+import AddAuthorPanel from './component/AddAuthorPanel';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/authors' element={<Authors />} />
         <Route path='/books' element={<Books />} />
       </Routes>
+      <AddAuthorPanel />
     </>
   );
 }
