@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaSearch } from "react-icons/fa";
 import BookCard from './BookCard';
+import AuthorCard from './AuthorCard';
 
 const Dashboard = () => {
     const books = [
@@ -30,7 +31,7 @@ const Dashboard = () => {
         }},
     ];
   return (
-    <div className='float-left w-5/6 h-screen px-10 py-10 flex flex-col justify-between bg-gray-100'>
+    <div className='float-left w-5/6 px-10 py-10 flex flex-col gap-20 bg-gray-100'>
         <div className='flex-box gap-20'>
             <h2 className='text-5xl font-bold font-sans'>Welcome Admin!</h2>
             <SearchBar />
@@ -45,7 +46,10 @@ const Dashboard = () => {
         </div>
 
         <div className='flex flex-col items-start gap-10'>
-            <h3 className='font-bold text-xl uppercase'>Most Famous Authors</h3>
+            <h3 className='font-bold text-xl uppercase'>Top Authors</h3>
+            <div className='flex-box justify-start gap-10'>
+                <AuthorCard />
+            </div>
         </div>
 
     </div>
