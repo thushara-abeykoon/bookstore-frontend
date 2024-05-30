@@ -10,7 +10,7 @@ const Authors = () => {
 
   useEffect(() => {
       fetchAuthors();
-    });
+    },[]);
 
   return (
     <div className='w-5/6 float-right px-10 py-10 flex flex-col gap-10'> 
