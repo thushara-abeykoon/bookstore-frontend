@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import AuthorCard from './AuthorCard'
 import axios from 'axios';
+import { AppContext } from '../App';
 
 const Authors = () => {
-  const [authors, setAuthors] = useState([]);
+  
+  const {authors} = useContext(AppContext);
+  const {fetchAuthors} = useContext(AppContext);
 
   useEffect(() => {
-      const fetchAuthors = async () => {
-        await axios.get("http://localhost:8080/api/v1/author/getAll")
-        .then((response) => {
-          setAuthors(response.data);
-        })
-        .catch((err)=>{console.log(err);});
-      }
       fetchAuthors();
-    },[]);
+    });
 
   return (
     <div className='w-5/6 float-right px-10 py-10 flex flex-col gap-10'> 

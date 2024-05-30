@@ -8,7 +8,7 @@ import { BiSolidBookAdd  } from "react-icons/bi";
 import { AppContext } from '../App';
 
 const NavigationBar = () => {
-  const handleAddAuthorPanel = useContext(AppContext);
+  const {handleAddAuthorPanel} = useContext(AppContext);
   const navigate = useNavigate();
   const currentRoute = useLocation();
 

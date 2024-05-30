@@ -6,6 +6,7 @@ import SideBar from './component/SideBar';
 import Authors from './component/Authors';
 import Books from './component/Books';
 import AddAuthorPanel from './component/AddAuthorPanel';
+import axios from 'axios';
 
 export const AppContext = createContext();
 
@@ -15,8 +16,17 @@ function App() {
     setIsAddAuthorPanelActive(activeValue);
   }
 
+  const [authors, setAuthors] = useState([]);
+  const fetchAuthors = async () => {
+    await axios.get("http://localhost:8080/api/v1/author/getAll")
+    .then((response) => {
+      setAuthors(response.data);
+    })
+    .catch((err)=>{console.log(err);});
+  }
+
   return (
-    <AppContext.Provider value={handleAddAuthorPanel}>
+    <AppContext.Provider value={{handleAddAuthorPanel, authors, fetchAuthors}}>
       <SideBar />
       <Routes>
         <Route path='/' element={<Dashboard />} />
