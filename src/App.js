@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { createContext, useState } from 'react';
 import './App.css';
 import Dashboard from './component/Dashboard';
@@ -7,6 +7,7 @@ import Authors from './component/Authors';
 import Books from './component/Books';
 import AddAuthorPanel from './component/AddAuthorPanel';
 import axios from 'axios';
+import AuthorViewer from './component/AuthorViewer';
 
 export const AppContext = createContext();
 
@@ -29,10 +30,12 @@ function App() {
     <AppContext.Provider value={{handleAddAuthorPanel, authors, fetchAuthors}}>
       <SideBar />
       <Routes>
-        <Route path='/' element={<Dashboard />} />
+      <Route path="/" element={<Navigate replace to="/home" />} />
+        <Route path='/home' element={<Dashboard />} />
         <Route path='/authors' element={<Authors />} />
         <Route path='/books' element={<Books />} />
-      </Routes>
+        <Route path='/authors/:email' element={<AuthorViewer />} />
+      </Routes> 
       {isAddAuthorPanelActive?<AddAuthorPanel />:null}
     </AppContext.Provider>
   );

@@ -13,13 +13,13 @@ const NavigationBar = () => {
   const currentRoute = useLocation();
 
   const getNavItemClass = (path) => (
-    `navigation-list-item ${currentRoute.pathname===path?'navigation-list-item-active':'hover:bg-white hover:bg-opacity-40'}`
+    `navigation-list-item ${currentRoute.pathname.startsWith(path)?'navigation-list-item-active':'hover:bg-white hover:bg-opacity-40'}`
   );
 
   return (
     <div className='px-3 py-16'>
         <ul className='flex flex-col gap-4'>
-            <li className={getNavItemClass('/')} onClick={() => navigate('/')}><FaHome />Home</li>
+            <li className={getNavItemClass('/home')} onClick={() => navigate('/home')}><FaHome />Home</li>
             <li className={getNavItemClass('/authors')} onClick={() => navigate('/authors')}><MdSupervisorAccount />Authors</li>
             {currentRoute.pathname==="/authors"?<li className='navigation-list-item hover:bg-white hover:bg-opacity-40' onClick={()=>handleAddAuthorPanel(true)} ><HiUserAdd /> Add Author</li>:null}
             <li className={getNavItemClass('/books')} onClick={() => navigate('/books')}><IoBookSharp />Books</li>
