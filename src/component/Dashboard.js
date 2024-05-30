@@ -4,25 +4,25 @@ import BookCard from './BookCard';
 
 const Dashboard = () => {
     const books = [
-        {isbn: 1, title: 'Book 1', author: {
+        {isbn: 1, title: 'Book 1', likeCount:15, author: {
             firstName: "John",
             lastName: "Doe",
             email: "doe@gmail.com",
             contactNo: "1234567890"
         }},
-        {isbn: 2, title: 'Book 2', author: {
+        {isbn: 2, title: 'Book 2', likeCount:2, author: {
             firstName: "John",
             lastName: "Doe",
             email: "doe@gmail.com",
             contactNo: "1234567890"
         }},
-        {isbn: 3, title: 'Book 3', author: {
+        {isbn: 3, title: 'Book 3', likeCount:5, author: {
             firstName: "Kamal",
             lastName: "Perera",
             email: "perera@gmail.com",
             contactNo: "0987654321"
         }},
-        {isbn: 4, title: 'Book 4', author: {
+        {isbn: 4, title: 'Book 4', likeCount:6, author: {
             firstName: "Kamal",
             lastName: "Perera",
             email: "perera@gmail.com",
@@ -35,15 +35,19 @@ const Dashboard = () => {
             <h2 className='text-5xl font-bold font-sans'>Welcome Admin!</h2>
             <SearchBar />
         </div>
-        <div className='bg-gray-500 h-32 rounded-3xl'></div>
         <div className='flex flex-col items-start gap-10'>
             <h3 className='font-bold text-xl  uppercase'>Most Liked Books</h3>
             <div className='flex-box justify-start gap-10'>
                 {books.map(book=>(
-                    <BookCard key={book.isbn} isbn={book.isbn} title={book.title} author={book.author} />
+                    <BookCard key={book.isbn} isbn={book.isbn} likeCount={book.likeCount} title={book.title} author={book.author} />
                 ))}
             </div>
         </div>
+
+        <div className='flex flex-col items-start gap-10'>
+            <h3 className='font-bold text-xl uppercase'>Most Famous Authors</h3>
+        </div>
+
     </div>
   )
 }
