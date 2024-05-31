@@ -4,7 +4,7 @@ import { FaHeart } from "react-icons/fa";
 
 const BookCard = ({title, author, isbn, likeCount}) => {
   return (
-    <div className='w-64 shadow-xl rounded-lg py-4 flex flex-col items-center hover:bg-[#f5f5f5] cursor-pointer'>
+    <div className='w-64 shadow-xl rounded-lg pb-4 flex flex-col items-center hover:bg-[#f5f5f5] cursor-pointer'>
         <div className='w-full h-64 flex-box justify-center bg-[#e0e0e0] rounded-t-lg'>
             <img src={bookImage} className='h-full' />
         </div>

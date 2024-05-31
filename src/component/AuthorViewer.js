@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import AuthorImage from "../assets/219970.png"
 import BookCard from './BookCard';
+import AddNewBookButton from './AddNewBookButton';
 
 const AuthorViewer = () => {
     const params = useParams();
@@ -47,7 +48,8 @@ const AuthorViewer = () => {
         {/* Author Books Section */}
         <div className='px-20 py-5'>
             <h3 className='text-xl uppercase font-bold'>Books By Author</h3>
-            <div className='grid-box gap-8'>
+            <div className='grid-box gap-8 mt-10'>
+                <AddNewBookButton />
                 {books.map((book)=>{
                     return <BookCard key={book.isbn} title={book.title} author={author} isbn={book.isbn} likeCount={book.likeCount} />
                 })}
