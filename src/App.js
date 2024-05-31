@@ -8,13 +8,19 @@ import Books from './component/Books';
 import AddAuthorPanel from './component/AddAuthorPanel';
 import axios from 'axios';
 import AuthorViewer from './component/AuthorViewer';
+import AddBookPanel from './component/AddBookPanel';
 
 export const AppContext = createContext();
 
 function App() {
   const [isAddAuthorPanelActive, setIsAddAuthorPanelActive] = useState(false);
+  const [isAddBookPanelActive, setIsAddBookPanelActive] = useState(true);
   const handleAddAuthorPanel = (activeValue) => {
     setIsAddAuthorPanelActive(activeValue);
+  }
+
+  const handleAddBookPanel = (activeValue) => {
+    setIsAddBookPanelActive(activeValue);
   }
 
   const [authors, setAuthors] = useState([]);
@@ -27,7 +33,7 @@ function App() {
   }
 
   return (
-    <AppContext.Provider value={{handleAddAuthorPanel, authors, fetchAuthors}}>
+    <AppContext.Provider value={{handleAddAuthorPanel, handleAddBookPanel, authors, fetchAuthors}}>
       <SideBar />
       <Routes>
       <Route path="/" element={<Navigate replace to="/home" />} />
@@ -37,6 +43,7 @@ function App() {
         <Route path='/authors/:email' element={<AuthorViewer />} />
       </Routes> 
       {isAddAuthorPanelActive?<AddAuthorPanel />:null}
+      {isAddBookPanelActive?<AddBookPanel />:null}
     </AppContext.Provider>
   );
 }

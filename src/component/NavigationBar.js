@@ -9,6 +9,7 @@ import { AppContext } from '../App';
 
 const NavigationBar = () => {
   const {handleAddAuthorPanel} = useContext(AppContext);
+  const {handleAddBookPanel} = useContext(AppContext);
   const navigate = useNavigate();
   const currentRoute = useLocation();
 
@@ -21,7 +22,10 @@ const NavigationBar = () => {
         <ul className='flex flex-col gap-4'>
             <li className={getNavItemClass('/home')} onClick={() => navigate('/home')}><FaHome />Home</li>
             <li className={getNavItemClass('/authors')} onClick={() => navigate('/authors')}><MdSupervisorAccount />Authors</li>
-            {currentRoute.pathname==="/authors"?<li className='navigation-list-item hover:bg-white hover:bg-opacity-40' onClick={()=>handleAddAuthorPanel(true)} ><HiUserAdd /> Add Author</li>:null}
+            {currentRoute.pathname.startsWith("/authors")?<li className='navigation-list-item hover:bg-white hover:bg-opacity-40' onClick={()=>{
+              handleAddAuthorPanel(true);
+              handleAddBookPanel(false);
+              }} ><HiUserAdd /> Add Author</li>:null}
             <li className={getNavItemClass('/books')} onClick={() => navigate('/books')}><IoBookSharp />Books</li>
             {currentRoute.pathname==="/books"?<li className='navigation-list-item hover:bg-white hover:bg-opacity-40'><BiSolidBookAdd  /> Add Book</li>:null}
             <li></li>

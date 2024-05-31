@@ -15,7 +15,6 @@ const AddAuthorPanel = () => {
     const contactNoRef = useRef();
 
     const {handleAddAuthorPanel} = useContext(AppContext);
-    const textFieldStyle = 'w-full text-md px-4 py-2 border-b-2 border-black outline-none bg-transparent';
 
 
     useEffect(
