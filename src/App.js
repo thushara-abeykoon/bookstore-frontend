@@ -13,8 +13,13 @@ export const AppContext = createContext();
 
 function App() {
   const [isAddAuthorPanelActive, setIsAddAuthorPanelActive] = useState(false);
+  const [isAddBookPanelActive, setIsAddBookPanelActive] = useState(false);
   const handleAddAuthorPanel = (activeValue) => {
     setIsAddAuthorPanelActive(activeValue);
+  }
+
+  const handleAddBookPanel = (activeValue) => {
+    setIsAddBookPanelActive(activeValue);
   }
 
   const [authors, setAuthors] = useState([]);
@@ -27,14 +32,14 @@ function App() {
   }
 
   return (
-    <AppContext.Provider value={{handleAddAuthorPanel, authors, fetchAuthors}}>
+    <AppContext.Provider value={{handleAddAuthorPanel, handleAddBookPanel, authors, fetchAuthors}}>
       <SideBar />
       <Routes>
       <Route path="/" element={<Navigate replace to="/home" />} />
         <Route path='/home' element={<Dashboard />} />
         <Route path='/authors' element={<Authors />} />
         <Route path='/books' element={<Books />} />
-        <Route path='/authors/:email' element={<AuthorViewer />} />
+        <Route path='/authors/:email' element={<AuthorViewer isAddBookPanelActive={isAddBookPanelActive} />} />
       </Routes> 
       {isAddAuthorPanelActive?<AddAuthorPanel />:null}
     </AppContext.Provider>

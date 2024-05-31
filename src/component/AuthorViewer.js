@@ -1,20 +1,18 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import AuthorImage from "../assets/219970.png"
 import BookCard from './BookCard';
 import AddNewBookButton from './AddNewBookButton';
 import AddBookPanel from './AddBookPanel';
+import { AppContext } from '../App';
 
-const AuthorViewer = () => {
+const AuthorViewer = ({isAddBookPanelActive}) => {
     const params = useParams();
     const [author, setAuthor] = useState(null);
     const [books, setBooks] = useState([]);
-    const [isAddBookPanelActive, setIsAddBookPanelActive] = useState(false);
 
-    const handleAddBookPanel = (activeValue) => {
-        setIsAddBookPanelActive(activeValue);
-      }
+    const {handleAddBookPanel} = useContext(AppContext);
 
     const fetchAuthor = async () => {
         await axios.get(`http://localhost:8080/api/v1/author/get/${params.email}`)

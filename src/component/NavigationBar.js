@@ -24,11 +24,8 @@ const NavigationBar = () => {
             <li className={getNavItemClass('/authors')} onClick={() => navigate('/authors')}><MdSupervisorAccount />Authors</li>
             {currentRoute.pathname.startsWith("/authors")?<li className='navigation-list-item hover:bg-white hover:bg-opacity-40' onClick={()=>{
               handleAddAuthorPanel(true);
-              handleAddBookPanel(false);
-              }} ><HiUserAdd /> Add Author</li>:null}
+              handleAddBookPanel(false)}} ><HiUserAdd /> Add Author</li>:null}
             <li className={getNavItemClass('/books')} onClick={() => navigate('/books')}><IoBookSharp />Books</li>
-            {currentRoute.pathname==="/books"?<li className='navigation-list-item hover:bg-white hover:bg-opacity-40'><BiSolidBookAdd  /> Add Book</li>:null}
-            <li></li>
         </ul>
     </div>
   )
