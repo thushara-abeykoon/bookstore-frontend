@@ -8,7 +8,7 @@ const AuthorCard = ({email, firstName, lastName, bookCount, likeCount}) => {
     const navigate = useNavigate();
 
   return (
-    <div className='w-64 shadow-xl rounded-lg pt-3 pb-10 flex flex-col items-center gap-4 px-5 cursor-pointer' onClick={() => navigate(`/authors/${email}`)} >
+    <div className='bg-white w-64 shadow-xl rounded-lg pt-3 pb-10 flex flex-col items-center gap-4 px-5 cursor-pointer' onClick={() => navigate(`/authors/${email}`)} >
         <img src={UserImage} className='w-full' />
         <div className='flex flex-col items-center gap-3 w-full'>
             <h3 className='text-2xl font-bold capitalize'>{firstName} {lastName}</h3>

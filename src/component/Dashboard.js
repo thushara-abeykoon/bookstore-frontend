@@ -63,7 +63,7 @@ const Dashboard = () => {
     ]
 
   return (
-    <div className='float-right w-5/6 px-10 py-10 flex flex-col gap-20 bg-gray-100'>
+    <div className='float-right w-5/6 px-10 py-10 flex flex-col gap-20'>
         <div className='flex-box gap-20'>
             <h2 className='text-5xl font-bold font-sans'>Welcome Admin!</h2>
             <SearchBar />
