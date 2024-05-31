@@ -4,22 +4,28 @@ import { useParams } from 'react-router-dom'
 import AuthorImage from "../assets/219970.png"
 import BookCard from './BookCard';
 import AddNewBookButton from './AddNewBookButton';
+import AddBookPanel from './AddBookPanel';
 
 const AuthorViewer = () => {
     const params = useParams();
     const [author, setAuthor] = useState(null);
     const [books, setBooks] = useState([]);
+    const [isAddBookPanelActive, setIsAddBookPanelActive] = useState(false);
 
-    const fetchAuthor = async (email) => {
-        await axios.get(`http://localhost:8080/api/v1/author/get/${email}`)
+    const handleAddBookPanel = (activeValue) => {
+        setIsAddBookPanelActive(activeValue);
+      }
+
+    const fetchAuthor = async () => {
+        await axios.get(`http://localhost:8080/api/v1/author/get/${params.email}`)
         .then((response) => {
             setAuthor(response.data);
         })
         .catch((err)=>{console.error(err)});
     }
 
-    const fetchBooks = async (email) => {
-        await axios.get(`http://localhost:8080/api/v1/book/getByAuthor/${email}`)
+    const fetchBooks = async () => {
+        await axios.get(`http://localhost:8080/api/v1/book/getByAuthor/${params.email}`)
         .then((response) => {
             setBooks(response.data);
         })
@@ -27,7 +33,7 @@ const AuthorViewer = () => {
     }
 
     useEffect(()=>{
-        params && fetchAuthor(params.email) && fetchBooks(params.email);
+        params && fetchAuthor() && fetchBooks();
     },[params.email]);
 
   return (
@@ -49,13 +55,13 @@ const AuthorViewer = () => {
         <div className='px-10 py-5'>
             <h3 className='text-xl uppercase font-bold'>Books By Author</h3>
             <div className='grid-box gap-8 mt-10'>
-                <AddNewBookButton />
+                <AddNewBookButton handleAddBookPanel={handleAddBookPanel} />
                 {books.map((book)=>{
                     return <BookCard key={book.isbn} title={book.title} author={author} isbn={book.isbn} likeCount={book.likeCount} />
                 })}
             </div>
         </div>
-
+        {isAddBookPanelActive?<AddBookPanel handleAddBookPanel={handleAddBookPanel} author={author} fetchBooks={fetchBooks} />:null}
     </div>
   )
 }
