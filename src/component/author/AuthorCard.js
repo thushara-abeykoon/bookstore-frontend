@@ -1,5 +1,5 @@
 import React from 'react'
-import UserImage from '../assets/219970.png'
+import UserImage from '../../assets/219970.png'
 import { FaBookOpen, FaHeart } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 

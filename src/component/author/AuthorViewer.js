@@ -1,12 +1,12 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useReducer, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import AuthorImage from "../assets/219970.png"
-import BookCard from './BookCard';
-import AddNewBookButton from './AddNewBookButton';
-import AddBookPanel from './AddBookPanel';
-import { AppContext } from '../App';
-import { MdModeEdit } from 'react-icons/md';
+import { useNavigate, useParams } from 'react-router-dom'
+import AuthorImage from "../../assets/219970.png"
+import BookCard from '../book/BookCard';
+import AddNewBookButton from '../book/AddNewBookButton';
+import AddBookPanel from '../book/AddBookPanel';
+import { AppContext } from '../../App';
+import { MdDelete, MdModeEdit } from 'react-icons/md';
 import { ImCross } from 'react-icons/im';
 import { FaCheck } from 'react-icons/fa';
 
@@ -18,6 +18,7 @@ const AuthorViewer = ({isAddBookPanelActive}) => {
 
     const {handleAddBookPanel} = useContext(AppContext);
     const {fetchAuthors} = useContext(AppContext);
+    const navigate = useNavigate();
 
     const fetchAuthor = async (authorEmail) => {
         await axios.get(`http://localhost:8080/api/v1/author/get/${authorEmail?authorEmail:params.email}`)
@@ -37,6 +38,15 @@ const AuthorViewer = ({isAddBookPanelActive}) => {
         .catch(err=>console.error(err));
     }
 
+    const deleteAuthor = async () => {
+        await axios.delete(`http://localhost:8080/api/v1/author/delete/${author.email}`)
+        .then((response) => {
+            console.log(response.data);
+            navigate(`/authors`);
+        })
+        .catch(err=>console.error(err));
+    }
+
     const fetchBooks = async () => {
         await axios.get(`http://localhost:8080/api/v1/book/getByAuthor/${params.email}`)
         .then((response) => {
@@ -50,7 +60,7 @@ const AuthorViewer = ({isAddBookPanelActive}) => {
     },[params.email]);
 
   return (
-    <div className='w-5/6 float-right'>
+    <div className='w-5/6 h-full float-right'>
 
         {/* Author Details Section */}
         <div className=' flex items-end justify-between px-10 py-5 bg-gray-200 shadow-md'>
@@ -58,7 +68,7 @@ const AuthorViewer = ({isAddBookPanelActive}) => {
                 <img src={AuthorImage} className='h-full w-60' />
                 <div className='flex flex-col gap-5'>
                     <div>
-                        <input value={author?.firstName} disabled={!isUpdateModeOn} onChange={e=>setAuthor({...author,firstName:e.target.value})} type='text' className='text-7xl min-w-6 max-w-96  bg-transparent capitalize outline-none font-bold' />:
+                        <input value={author?.firstName} disabled={!isUpdateModeOn} onChange={e=>setAuthor({...author,firstName:e.target.value})} type='text' className='text-7xl min-w-6 max-w-96  bg-transparent capitalize outline-none font-bold' />
                         <input value={author?.lastName} disabled={!isUpdateModeOn} onChange={e=>setAuthor({...author,lastName:e.target.value})} type='text' className='text-7xl bg-transparent capitalize outline-none font-bold' />
                     </div>
                     <div className='font-light'>
@@ -67,7 +77,10 @@ const AuthorViewer = ({isAddBookPanelActive}) => {
                     </div>
                 </div>
             </div>
-            <div className='text-2xl py-3'>
+            <div className='text-2xl py-3 h-64 flex flex-col items-end justify-between'>
+
+                <MdDelete className='cursor-pointer' onClick={deleteAuthor} />
+
                 {isUpdateModeOn?
                 <p className='flex items-center gap-8' ><ImCross className='text-base cursor-pointer' onClick={()=>setIsUpdateModeOn(false)} /> 
                 <FaCheck className='cursor-pointer text-xl' onClick={updateAuthor} /></p>

@@ -1,5 +1,5 @@
 import React from 'react'
-import bookImage from '../assets/sampleBook.jpg'
+import bookImage from '../../assets/sampleBook.jpg'
 import { FaHeart } from "react-icons/fa";
 
 const BookCard = ({title, author, isbn, likeCount}) => {

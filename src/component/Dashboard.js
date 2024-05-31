@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaSearch } from "react-icons/fa";
-import BookCard from './BookCard';
-import AuthorCard from './AuthorCard';
+import BookCard from './book/BookCard';
+import AuthorCard from './author/AuthorCard';
 
 const Dashboard = () => {
     const books = [

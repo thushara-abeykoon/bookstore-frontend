@@ -2,12 +2,12 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { createContext, useState } from 'react';
 import './App.css';
 import Dashboard from './component/Dashboard';
-import SideBar from './component/SideBar';
-import Authors from './component/Authors';
-import Books from './component/Books';
-import AddAuthorPanel from './component/AddAuthorPanel';
+import SideBar from './component/sidebar/SideBar';
+import Authors from './component/author/Authors';
+import Books from './component/book/Books';
+import AddAuthorPanel from './component/author/AddAuthorPanel';
 import axios from 'axios';
-import AuthorViewer from './component/AuthorViewer';
+import AuthorViewer from './component/author/AuthorViewer';
 
 export const AppContext = createContext();
 

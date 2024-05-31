@@ -4,8 +4,7 @@ import { MdSupervisorAccount } from "react-icons/md";
 import { IoBookSharp } from "react-icons/io5";
 import { useLocation, useNavigate } from 'react-router-dom';
 import { HiUserAdd } from "react-icons/hi";
-import { BiSolidBookAdd  } from "react-icons/bi";
-import { AppContext } from '../App';
+import { AppContext } from '../../App';
 
 const NavigationBar = () => {
   const {handleAddAuthorPanel} = useContext(AppContext);

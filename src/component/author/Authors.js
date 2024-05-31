@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import AuthorCard from './AuthorCard'
-import axios from 'axios';
-import { AppContext } from '../App';
+import AuthorCard from './AuthorCard';
+import { AppContext } from '../../App';
 
 const Authors = () => {
   

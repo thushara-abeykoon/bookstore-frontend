@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useReducer, useRef } from 'react'
 import { ImCross } from "react-icons/im";
-import SampleUserImage from "../assets/219970.png"
-import App, { AppContext } from '../App';
+import SampleUserImage from "../../assets/219970.png"
+import App, { AppContext } from '../../App';
 import axios from 'axios';
 
 const AddAuthorPanel = () => {

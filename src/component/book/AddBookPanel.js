@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useRef } from 'react'
-import { AppContext } from '../App'
+import { AppContext } from '../../App'
 import { ImCross } from 'react-icons/im';
-import BookImage from "../assets/sampleBook.jpg"
 import { RiImageAddFill } from 'react-icons/ri';
 import axios from 'axios';
 

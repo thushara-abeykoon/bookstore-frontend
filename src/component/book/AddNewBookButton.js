@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { FaPlus } from 'react-icons/fa'
-import { AppContext } from '../App'
+import { AppContext } from '../../App'
 
 const AddNewBookButton = ({handleAddBookPanel}) => {
   const {handleAddAuthorPanel} = useContext(AppContext);

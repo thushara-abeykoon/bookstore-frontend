@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from "../assets/book-and-studen-logo-free-vector - Copy.png"
+import Logo from "../../assets/book-and-studen-logo-free-vector - Copy.png"
 
 const Header = () => {
   return (
