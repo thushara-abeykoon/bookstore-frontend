@@ -47,7 +47,7 @@ const AuthorViewer = () => {
         {/* Author Books Section */}
         <div className='px-20 py-5'>
             <h3 className='text-xl uppercase font-bold'>Books By Author</h3>
-            <div>
+            <div className='grid-box gap-8'>
                 {books.map((book)=>{
                     return <BookCard key={book.isbn} title={book.title} author={author} isbn={book.isbn} likeCount={book.likeCount} />
                 })}
