@@ -34,7 +34,7 @@ const AuthorViewer = () => {
     <div className='w-5/6 float-right'>
 
         {/* Author Details Section */}
-        <div className='flex items-center gap-10 px-20 py-5 bg-gray-200 shadow-md'>
+        <div className='flex items-center gap-10 px-10 py-5 bg-gray-200 shadow-md'>
             <img src={AuthorImage} className='h-full w-40' />
             <div className='flex flex-col gap-5'>
                 <h2 className='text-5xl font-bold'>{author?.firstName} {author?.lastName}</h2>
@@ -46,7 +46,7 @@ const AuthorViewer = () => {
         </div>
 
         {/* Author Books Section */}
-        <div className='px-20 py-5'>
+        <div className='px-10 py-5'>
             <h3 className='text-xl uppercase font-bold'>Books By Author</h3>
             <div className='grid-box gap-8 mt-10'>
                 <AddNewBookButton />
