@@ -34,7 +34,7 @@ const BookCard = ({book}) => {
             <p className='text-md text-black flex-box gap-2' onClick={likeBook}><FaRegHeart /></p>
             }
           </div>
-          <p>{book.author.firstName} {book.author.lastName}</p>
+          <p className='capitalize'>{book.author.firstName} {book.author.lastName}</p>
         </div>
     </div>
   )
