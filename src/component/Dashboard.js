@@ -66,7 +66,7 @@ const Dashboard = () => {
             <h3 className='font-bold text-xl uppercase'>Top Authors</h3>
             <div className='flex-box justify-start gap-10'>
                 {authors.map(author=>(
-                    <AuthorCard key={author.id} firstName={author.firstName} lastName={author.lastName} likeCount={10} bookCount={20} />
+                    <AuthorCard key={author.id} email={author.email} firstName={author.firstName} lastName={author.lastName} likeCount={10} bookCount={20} />
                 ))}
             </div>
         </div>
