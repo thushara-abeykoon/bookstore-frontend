@@ -14,15 +14,15 @@ export const AppContext = createContext();
 function App() {
   const [isAddAuthorPanelActive, setIsAddAuthorPanelActive] = useState(false);
   const [isAddBookPanelActive, setIsAddBookPanelActive] = useState(false);
+  const [authors, setAuthors] = useState([]);
+  const [books, setBooks] = useState([]);
   const handleAddAuthorPanel = (activeValue) => {
     setIsAddAuthorPanelActive(activeValue);
   }
-
   const handleAddBookPanel = (activeValue) => {
     setIsAddBookPanelActive(activeValue);
   }
 
-  const [authors, setAuthors] = useState([]);
   const fetchAuthors = async () => {
     await axios.get("http://localhost:8080/api/v1/author/getAll")
     .then((response) => {
@@ -31,8 +31,17 @@ function App() {
     .catch((err)=>{console.log(err);});
   }
 
+  const fetchBooks = async () => {
+    await axios.get("http://localhost:8080/api/v1/book/getAll")
+    .then((response)=>{
+      setBooks(response.data);
+      console.log(response.data)
+    })
+    .catch((err)=>{console.error(err);});
+  }
+
   return (
-    <AppContext.Provider value={{handleAddAuthorPanel, handleAddBookPanel, authors, fetchAuthors}}>
+    <AppContext.Provider value={{handleAddAuthorPanel, handleAddBookPanel, authors, books, fetchBooks, fetchAuthors}}>
       <SideBar />
       <Routes>
       <Route path="/" element={<Navigate replace to="/home" />} />
