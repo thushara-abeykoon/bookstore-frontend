@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import SampleBookImage from '../../assets/sampleBook.jpg';
 import AuthorCard from '../author/AuthorCard';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -7,6 +7,7 @@ import { MdDelete, MdModeEdit } from 'react-icons/md';
 import { FaCheck, FaHeart } from 'react-icons/fa';
 import { ImCross } from 'react-icons/im';
 import AuthorImage from "../../assets/219970.png";
+import { AppContext } from '../../App';
 
 const BookViewer = () => {
 
@@ -14,6 +15,7 @@ const BookViewer = () => {
   const [book, setBook] = useState();
   const [updateMode, setUpdateMode] = useState(false);
   const navigate = useNavigate();
+  const {login} = useContext(AppContext);
 
   useEffect(()=>{
     fetchBook();
@@ -66,7 +68,7 @@ const BookViewer = () => {
                         </div>
               </div>
             </div>
-            <div className='text-2xl py-3 h-80 flex flex-col items-end justify-between'>
+           {login? <div className='text-2xl py-3 h-80 flex flex-col items-end justify-between'>
                 <MdDelete className='cursor-pointer' onClick={deleteBook} />
                 {updateMode?
                 <p className='flex items-center gap-8' ><ImCross className='text-base cursor-pointer' onClick={()=>setUpdateMode(false)} /> 
@@ -74,7 +76,7 @@ const BookViewer = () => {
                 :
                 <MdModeEdit className='cursor-pointer' onClick={()=>setUpdateMode(true)} />
               }
-            </div>
+            </div>:null}
         </div>
       </div>
 

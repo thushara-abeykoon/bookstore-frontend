@@ -6,14 +6,13 @@ import { AppContext } from '../App';
 import axios from 'axios';
 
 const Dashboard = () => {
-
-    const {authors, books} = useContext(AppContext);
+    const {authors, books, login} = useContext(AppContext);
     const [mostLikedBooks, setMostLikedBooks] = useState([]);
     useEffect(()=>{
         const sortedBooks = books;
         sortedBooks.sort((a,b)=>b.likeCount- a.likeCount);
         setMostLikedBooks(sortedBooks.slice(0,4));
-    },[])
+    },[books])
     
 
     // const authors = [
@@ -50,7 +49,7 @@ const Dashboard = () => {
   return (
     <div className='float-right w-5/6 px-10 py-10 flex flex-col gap-20'>
         <div className='flex-box gap-20'>
-            <h2 className='text-5xl font-bold font-sans'>Welcome Admin!</h2>
+            <h2 className='text-5xl font-bold font-sans'>Welcome {login?"Admin":"User"}!</h2>
             <SearchBar />
         </div>
         <div className='flex flex-col items-start gap-10'>

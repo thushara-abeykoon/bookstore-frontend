@@ -17,6 +17,8 @@ function App() {
   const [isAddBookPanelActive, setIsAddBookPanelActive] = useState(false);
   const [authors, setAuthors] = useState([]);
   const [books, setBooks] = useState([]);
+  const [login, setLogin] = useState(false);
+
   const handleAddAuthorPanel = (activeValue) => {
     setIsAddAuthorPanelActive(activeValue);
   }
@@ -42,7 +44,7 @@ function App() {
   }
 
   return (
-    <AppContext.Provider value={{handleAddAuthorPanel, handleAddBookPanel, authors, books, fetchBooks, fetchAuthors}}>
+    <AppContext.Provider value={{handleAddAuthorPanel, handleAddBookPanel, authors, books, fetchBooks, fetchAuthors, login, setLogin}}>
       <SideBar />
       <Routes>
       <Route path="/" element={<Navigate replace to="/home" />} />

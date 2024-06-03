@@ -16,8 +16,7 @@ const AuthorViewer = ({isAddBookPanelActive}) => {
     const [books, setBooks] = useState([]);
     const [isUpdateModeOn, setIsUpdateModeOn] = useState(false);
 
-    const {handleAddBookPanel} = useContext(AppContext);
-    const {fetchAuthors} = useContext(AppContext);
+    const {handleAddBookPanel, login} = useContext(AppContext);
     const navigate = useNavigate();
 
     const fetchAuthor = async (authorEmail) => {
@@ -77,24 +76,25 @@ const AuthorViewer = ({isAddBookPanelActive}) => {
                     </div>
                 </div>
             </div>
+            {login?
             <div className='text-2xl py-3 h-64 flex flex-col items-end justify-between'>
 
-                <MdDelete className='cursor-pointer' onClick={deleteAuthor} />
+            <MdDelete className='cursor-pointer' onClick={deleteAuthor} />
 
-                {isUpdateModeOn?
-                <p className='flex items-center gap-8' ><ImCross className='text-base cursor-pointer' onClick={()=>setIsUpdateModeOn(false)} /> 
-                <FaCheck className='cursor-pointer text-xl' onClick={updateAuthor} /></p>
-                :
-                <MdModeEdit className='cursor-pointer' onClick={()=>setIsUpdateModeOn(true)} />
-                }
-                </div>
+            {isUpdateModeOn?
+            <p className='flex items-center gap-8' ><ImCross className='text-base cursor-pointer' onClick={()=>setIsUpdateModeOn(false)} /> 
+            <FaCheck className='cursor-pointer text-xl' onClick={updateAuthor} /></p>
+            :
+            <MdModeEdit className='cursor-pointer' onClick={()=>setIsUpdateModeOn(true)} />
+            }
+            </div>:null}
         </div>
 
         {/* Author Books Section */}
         <div className='px-10 py-5'>
             <h3 className='text-xl uppercase font-bold'>Books By Author</h3>
             <div className='grid-box gap-8 mt-10'>
-                <AddNewBookButton handleAddBookPanel={handleAddBookPanel} />
+                {login?<AddNewBookButton handleAddBookPanel={handleAddBookPanel} />:null}
                 {books.map((book)=>{
                     return <BookCard book={book} key={book.isbn}/>
                 })}
