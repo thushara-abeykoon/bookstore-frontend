@@ -11,6 +11,8 @@ const Books = () => {
     fetchBooks(); 
   },[]);
 
+  
+
   const categories = {
     name: "novels",
     books: [
@@ -38,31 +40,38 @@ const Books = () => {
           email: "perera@gmail.com",
           contactNo: "0987654321"
       }},
+      {isbn: 5, title: 'Book 5', likeCount:7, author: {
+          firstName: "Kamal",
+          lastName: "Perera",
+          email: "perera@gmail.com",
+          contactNo: "0987654321"
+      }}
   ]
   }
 
   return (
     <div className='w-5/6 float-right px-10 py-10'>
         <h2 className='text-5xl font-bold mb-10'>All Books</h2>
-        <CategoryBox category={categories} />
+        <div className='flex flex-col gap-20'>
+          <CategoryBox category={categories} />
+          <CategoryBox category={categories} />
+        </div>
     </div>
   )
 }
 
 const CategoryBox = ({category}) => {
-  const [expand, setExpand] = useState(false);
 
   return (
     <div className='flex flex-col gap-10'>
-      <div className={`bg-white shadow-lg px-10 py-4 rounded-lg flex items-start justify-between transition-all duration-300`}>
-        <h3 className='text-xl capitalize'>{category?.name}</h3>
-        <p className='text-3xl'><IoIosArrowForward onClick={() => {setExpand(!expand)}} className={`cursor-pointer transition-all duration-300 ${expand?'rotate-90':''}`}/></p>
-      </div>
+      <div className={`bg-gray-100  px-10 pt-6 pb-10 rounded-lg flex flex-col gap-8 justify-between`}>
+        <h3 className='text-3xl px-5 font-semibold capitalize'>{category?.name}</h3>
         <div className='grid-box'>
           {category.books.map((book) => (
             <BookCard key={book.isbn} {...book} />
           ))}
         </div>
+      </div>
     </div>
   );
 }
