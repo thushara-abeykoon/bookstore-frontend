@@ -21,9 +21,9 @@ const Dashboard = () => {
             <h2 className='text-5xl font-bold font-sans'>Welcome {login?"Admin":"User"}!</h2>
             <SearchBar />
         </div>
-        <div className='flex flex-col items-start gap-10'>
+        <div className='flex flex-col w-full items-start gap-10'>
             <h3 className='font-bold text-xl  uppercase'>Most Liked Books</h3>
-            <div className='flex-box justify-start gap-10'>
+            <div className='w-full grid-box'>
                 {mostLikedBooks?.map(book=>(
                     <BookCard key={book.isbn} book={book} />
                 ))}
@@ -32,7 +32,7 @@ const Dashboard = () => {
 
         <div className='flex flex-col items-start gap-10'>
             <h3 className='font-bold text-xl uppercase'>Top Authors</h3>
-            <div className='flex-box justify-start gap-10'>
+            <div className='grid-box w-full'>
                 {authors.slice(0,4).map(author=>(
                     <AuthorCard key={author.id} email={author.email} firstName={author.firstName} lastName={author.lastName} likeCount={10} bookCount={20} />
                 ))}
