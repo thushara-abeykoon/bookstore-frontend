@@ -54,7 +54,7 @@ const SearchBar = () => {
     }
 
   return (
-    <div onClick={()=>setSearchActive(false)} className={searchActive?'md:w-5/6 max-md:w-full h-screen fixed bottom-0 right-0 bg-white bg-opacity-30 backdrop-blur-md px-10 py-10 flex flex-col gap-20':'max-md:w-full'}>
+    <div onClick={()=>setSearchActive(false)} className={searchActive?'md:w-5/6 max-md:w-full h-screen fixed bottom-0 right-0 bg-white bg-opacity-30 backdrop-blur-md px-5 py-5 flex flex-col gap-20':'max-md:w-full'}>
         <div className={searchActive?'w-full flex-box border-b-2 px-10 py-3 border-black ':'border-2 border-gray-400 w-full rounded-2xl py-2 px-5 flex-box'}>
           <input onChange={e=>{
             if (e.target.value.length!==0)
@@ -66,9 +66,11 @@ const SearchBar = () => {
         </div>
         {searchActive?
         
-        <div className='grid-box'>
-            {searchedBooks.length===0?<p>No Books Found</p>:
-            searchedBooks.map(book=><BookCard key={book.isbn} book={book} />)}
+        <div className='overflow-auto'>
+            <div className='grid-box'>
+                {searchedBooks.length===0?<p>No Books Found</p>:
+                searchedBooks.map(book=><BookCard key={book.isbn} book={book} />)}
+            </div>
         </div>
 
         :null}

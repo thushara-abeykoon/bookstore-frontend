@@ -49,21 +49,21 @@ const BookViewer = () => {
   }
 
   return (
-    <div className='w-5/6 float-right'>
+    <div className='md:w-5/6 float-right'>
       <div className='flex items-center justify-between px-10 py-5 bg-gray-200 shadow-md'>
-          <div className='flex items-center gap-10'>
-            <img src={SampleBookImage} className='h-full w-64' />
-            <div className='flex flex-col gap-10 h-80 items-start justify-between'>
+          <div className='flex max-md:flex-col items-center gap-10'>
+            <img src={SampleBookImage} className='h-full max-md:w-32 md:w-64' />
+            <div className='flex flex-col h-80 items-start justify-between max-md:justify-start max-md:gap-5'>
                         <div>
-                            <input value={book?.title} disabled={!updateMode} onChange={e=>setBook({...book,title:e.target.value})} type='text' className='text-7xl w-full bg-transparent capitalize outline-none font-bold' />
-                            <p className='text-xl font-normal'>ISBN-{book?.isbn}</p>
-                            <p className='text-xl text-black flex-box justify-start pl-1 gap-2 mt-2'>{<FaHeart />} {book?.likeCount}</p>
+                            <input value={book?.title} disabled={!updateMode} onChange={e=>setBook({...book,title:e.target.value})} type='text' className='text-7xl max-md:text-3xl max-md:text-center w-full bg-transparent capitalize outline-none font-bold' />
+                            <p className='text-xl max-md:text-sm max-md:text-center max-md:font-light font-normal'>ISBN-{book?.isbn}</p>
+                            <p className='text-xl max-md:text-sm text-black flex-box justify-start max-md:justify-center max-md:gap-1 pl-1 gap-2 mt-2'>{<FaHeart />} {book?.likeCount}</p>
                         </div>
-                        <div className='flex gap-5 items-center cursor-pointer' onClick={()=>{navigate(`/authors/${book.author.email}`)}}>
+                        <div className='flex max-md:mx-auto gap-5 items-center cursor-pointer' onClick={()=>{navigate(`/authors/${book.author.email}`)}}>
                           <img src={AuthorImage} width={50} />
                           <p className='capitalize text-lg font-bold'>{book?.author.firstName} {book?.author.lastName}</p>
                         </div>
-                        <div>
+                        <div className='max-md:mx-auto'>
                             <p className='bg-gray-900 p-1 rounded-md font-normal text-white '><input disabled={!updateMode} className='bg-transparent text-center outline-none capitalize' value={book?.category} type="text" onChange={e=>setBook({...book,category:e.target.value})} /></p>
                         </div>
               </div>

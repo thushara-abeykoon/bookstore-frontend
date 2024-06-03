@@ -6,7 +6,7 @@ import BookCard from '../book/BookCard';
 import AddNewBookButton from '../book/AddNewBookButton';
 import AddBookPanel from '../book/AddBookPanel';
 import { AppContext } from '../../App';
-import { MdDelete, MdModeEdit } from 'react-icons/md';
+import { MdCall, MdDelete, MdEmail, MdModeEdit } from 'react-icons/md';
 import { ImCross } from 'react-icons/im';
 import { FaCheck } from 'react-icons/fa';
 
@@ -59,20 +59,20 @@ const AuthorViewer = ({isAddBookPanelActive}) => {
     },[params.email]);
 
   return (
-    <div className='w-5/6 h-full float-right'>
+    <div className='md:w-5/6 h-full md:float-right'>
 
         {/* Author Details Section */}
         <div className=' flex items-end justify-between px-10 py-5 bg-gray-200 shadow-md'>
-            <div className='flex items-center gap-10'>
-                <img src={AuthorImage} className='h-full w-60' />
+            <div className='flex max-md:flex-col items-center gap-10'>
+                <img src={AuthorImage} className='h-full max-md:w-24 w-60' />
                 <div className='flex flex-col gap-5'>
                     <div>
-                        <input value={author?.firstName} disabled={!isUpdateModeOn} onChange={e=>setAuthor({...author,firstName:e.target.value})} type='text' className='text-7xl w-full bg-transparent capitalize outline-none font-bold' />
-                        <input value={author?.lastName} disabled={!isUpdateModeOn} onChange={e=>setAuthor({...author,lastName:e.target.value})} type='text' className='text-7xl w-full bg-transparent capitalize outline-none font-bold' />
+                        <input value={author?.firstName} disabled={!isUpdateModeOn} onChange={e=>setAuthor({...author,firstName:e.target.value})} type='text' className='text-7xl max-md:text-4xl max-md:text-center w-full bg-transparent capitalize outline-none font-bold' />
+                        <input value={author?.lastName} disabled={!isUpdateModeOn} onChange={e=>setAuthor({...author,lastName:e.target.value})} type='text' className='text-7xl max-md:text-4xl max-md:text-center w-full bg-transparent capitalize outline-none font-bold' />
                     </div>
-                    <div className='font-light'>
-                        <p>Email : <input disabled={!isUpdateModeOn} className='bg-transparent outline-none' value={author?.email} type="text" onChange={e=>setAuthor({...author,email:e.target.value})} /></p>
-                        <p>Contact : <input disabled={!isUpdateModeOn} className='bg-transparent outline-none' value={author?.contactNo} type="text" onChange={e=>setAuthor({...author,contactNo:e.target.value})} /></p>
+                    <div className='font-light max-md:text-xs flex flex-col items-center text-center'>
+                        <p className='flex items-center gap-3'><MdEmail /> <input disabled={!isUpdateModeOn} className='bg-transparent outline-none' value={author?.email} type="text" onChange={e=>setAuthor({...author,email:e.target.value})} /></p>
+                        <p className='flex items-center gap-3'><MdCall /> <input disabled={!isUpdateModeOn} className='bg-transparent outline-none' value={author?.contactNo} type="text" onChange={e=>setAuthor({...author,contactNo:e.target.value})} /></p>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@ const AuthorViewer = ({isAddBookPanelActive}) => {
         {/* Author Books Section */}
         <div className='px-10 py-5'>
             <h3 className='text-xl uppercase font-bold'>Books By Author</h3>
-            <div className='grid-box gap-8 mt-10'>
+            <div className='grid-box mt-10'>
                 {login?<AddNewBookButton handleAddBookPanel={handleAddBookPanel} />:null}
                 {books.map((book)=>{
                     return <BookCard book={book} key={book.isbn}/>

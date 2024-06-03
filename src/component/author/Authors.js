@@ -12,7 +12,7 @@ const Authors = () => {
     },[]);
 
   return (
-    <div className='w-5/6 float-right px-10 py-10 flex flex-col gap-10'> 
+    <div className='md:w-5/6 max-md:w-full float-right px-10 py-10 flex flex-col gap-10'> 
       <h3 className='text-5xl font-bold'>All Authors</h3>
       <div className='grid-box'>
         {authors.length!==0?

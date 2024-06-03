@@ -61,7 +61,7 @@ const Books = () => {
   }
 
   return (
-    <div className='w-5/6 float-right px-10 py-10'>
+    <div className='md:w-5/6 md:float-right max-md:w-full md:px-10 py-10 max-md:text-center'>
         <h2 className='text-5xl font-bold mb-10'>All Books</h2>
         <div className='flex flex-col gap-20'>
           {bookCategories?.map((category) => (
@@ -76,7 +76,7 @@ const CategoryBox = ({category}) => {
 
   return (
     <div className='flex flex-col gap-10'>
-      <div className={`bg-gray-100  px-10 pt-6 pb-10 rounded-lg flex flex-col gap-8 justify-between`}>
+      <div className={`bg-gray-100 px-10 pt-6 pb-10 rounded-lg flex flex-col gap-8 justify-between`}>
         <h3 className='text-3xl px-5 font-semibold capitalize'>{category?.name}</h3>
         <div className='grid-box'>
           {category.books?.map((book) => (
