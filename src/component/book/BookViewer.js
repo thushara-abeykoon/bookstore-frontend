@@ -55,7 +55,7 @@ const BookViewer = () => {
             <img src={SampleBookImage} className='h-full w-64' />
             <div className='flex flex-col gap-10 h-80 items-start justify-between'>
                         <div>
-                            <input value={book?.title} disabled={!updateMode} onChange={e=>setBook({...book,title:e.target.value})} type='text' className='text-7xl min-w-6 max-w-96  bg-transparent capitalize outline-none font-bold' />
+                            <input value={book?.title} disabled={!updateMode} onChange={e=>setBook({...book,title:e.target.value})} type='text' className='text-7xl w-full bg-transparent capitalize outline-none font-bold' />
                             <p className='text-xl font-normal'>ISBN-{book?.isbn}</p>
                             <p className='text-xl text-black flex-box justify-start pl-1 gap-2 mt-2'>{<FaHeart />} {book?.likeCount}</p>
                         </div>

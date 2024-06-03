@@ -67,8 +67,8 @@ const AuthorViewer = ({isAddBookPanelActive}) => {
                 <img src={AuthorImage} className='h-full w-60' />
                 <div className='flex flex-col gap-5'>
                     <div>
-                        <input value={author?.firstName} disabled={!isUpdateModeOn} onChange={e=>setAuthor({...author,firstName:e.target.value})} type='text' className='text-7xl min-w-6 max-w-96  bg-transparent capitalize outline-none font-bold' />
-                        <input value={author?.lastName} disabled={!isUpdateModeOn} onChange={e=>setAuthor({...author,lastName:e.target.value})} type='text' className='text-7xl bg-transparent capitalize outline-none font-bold' />
+                        <input value={author?.firstName} disabled={!isUpdateModeOn} onChange={e=>setAuthor({...author,firstName:e.target.value})} type='text' className='text-7xl w-full bg-transparent capitalize outline-none font-bold' />
+                        <input value={author?.lastName} disabled={!isUpdateModeOn} onChange={e=>setAuthor({...author,lastName:e.target.value})} type='text' className='text-7xl w-full bg-transparent capitalize outline-none font-bold' />
                     </div>
                     <div className='font-light'>
                         <p>Email : <input disabled={!isUpdateModeOn} className='bg-transparent outline-none' value={author?.email} type="text" onChange={e=>setAuthor({...author,email:e.target.value})} /></p>
