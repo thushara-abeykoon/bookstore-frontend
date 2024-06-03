@@ -28,7 +28,7 @@ const BookCard = ({book}) => {
         <div className='w-full px-5 py-3'>
             <p className='text-xs max-md:text-[10px] text-gray-500'>ISBN-{book.isbn}</p>
           <div className='flex w-full flex-box gap-3'>
-          <h3 className='text-lg max-md:text-base font-medium'>{book.title}</h3>
+          <h3 className='text-lg max-md:text-base font-medium truncate'>{book.title}</h3>
             {login?<p className='text-md max-md:text-xs text-black flex-box max-md:gap-1 gap-2'>{<FaHeart />} {book.likeCount}</p>:
             liked?<p className='text-md max-md:text-xs text-black flex-box gap-2 cursor-pointer'><FaHeart /></p>:
             <p className='text-md max-md:text-xs text-black flex-box gap-2' onClick={likeBook}><FaRegHeart /></p>

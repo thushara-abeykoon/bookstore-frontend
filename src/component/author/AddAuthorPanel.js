@@ -45,7 +45,7 @@ const AddAuthorPanel = () => {
     }
 
   return (
-    <div className='add-new-panel'>
+    <div className='add-new-panel max-md:w-full'>
         <div className='text-xl w-full flex-box justify-end cursor-pointer text-white'><ImCross onClick={()=>handleAddAuthorPanel(false)} /></div>
         <img src={SampleUserImage} width={200} />
         <form onSubmit={handleAuthorSubmit} className='w-3/4 flex flex-col items-center gap-10 '>

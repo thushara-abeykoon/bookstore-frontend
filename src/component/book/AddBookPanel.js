@@ -39,7 +39,7 @@ const AddBookPanel = ({author, fetchBooks, handleAddBookPanel}) => {
   }
 
   return (
-    <div className='add-new-panel'>
+    <div className='add-new-panel max-md:w-full'>
       <div className='text-xl w-full flex-box justify-end cursor-pointer text-white'><ImCross onClick={()=>handleAddBookPanel(false)} /></div>
      <div className='h-64 w-64 bg-transparent border-4 border-gray-500 rounded-lg border-dashed flex-box justify-center text-8xl'><RiImageAddFill className='text-gray-500' /></div>
       <form onSubmit={handleSubmit} className='w-3/4 flex flex-col items-center gap-10 mt-10 '>

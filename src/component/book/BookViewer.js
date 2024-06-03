@@ -49,8 +49,8 @@ const BookViewer = () => {
   }
 
   return (
-    <div className='md:w-5/6 float-right'>
-      <div className='flex items-center justify-between px-10 py-5 bg-gray-200 shadow-md'>
+    <div className='md:w-5/6 md:float-right'>
+      <div className='flex items-center justify-between px-10 py-5 bg-gray-200 shadow-md max-md:flex-col-reverse'>
           <div className='flex max-md:flex-col items-center gap-10'>
             <img src={SampleBookImage} className='h-full max-md:w-32 md:w-64' />
             <div className='flex flex-col h-80 items-start justify-between max-md:justify-start max-md:gap-5'>
@@ -68,7 +68,7 @@ const BookViewer = () => {
                         </div>
               </div>
             </div>
-           {login? <div className='text-2xl py-3 h-80 flex flex-col items-end justify-between'>
+           {login? <div className='text-2xl max-md:w-full py-3 h-80 max-md:h-full flex md:flex-col items-end justify-between'>
                 <MdDelete className='cursor-pointer' onClick={deleteBook} />
                 {updateMode?
                 <p className='flex items-center gap-8' ><ImCross className='text-base cursor-pointer' onClick={()=>setUpdateMode(false)} /> 
