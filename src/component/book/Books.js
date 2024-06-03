@@ -80,7 +80,7 @@ const CategoryBox = ({category}) => {
         <h3 className='text-3xl px-5 font-semibold capitalize'>{category?.name}</h3>
         <div className='grid-box'>
           {category.books?.map((book) => (
-            <BookCard key={book.isbn} {...book} />
+            <BookCard key={book.isbn} book={book} />
           ))}
         </div>
       </div>

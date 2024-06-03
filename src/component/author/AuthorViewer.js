@@ -96,7 +96,7 @@ const AuthorViewer = ({isAddBookPanelActive}) => {
             <div className='grid-box gap-8 mt-10'>
                 <AddNewBookButton handleAddBookPanel={handleAddBookPanel} />
                 {books.map((book)=>{
-                    return <BookCard key={book.isbn} title={book.title} author={""} isbn={book.isbn} likeCount={book.likeCount} />
+                    return <BookCard book={book} key={book.isbn}/>
                 })}
             </div>
         </div>

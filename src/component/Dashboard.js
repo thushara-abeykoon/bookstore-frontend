@@ -72,7 +72,7 @@ const Dashboard = () => {
             <h3 className='font-bold text-xl  uppercase'>Most Liked Books</h3>
             <div className='flex-box justify-start gap-10'>
                 {books.map(book=>(
-                    <BookCard key={book.isbn} isbn={book.isbn} likeCount={book.likeCount} title={book.title} author={book.author} />
+                    <BookCard key={book.isbn} book={book} />
                 ))}
             </div>
         </div>
