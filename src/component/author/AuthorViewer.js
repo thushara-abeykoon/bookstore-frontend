@@ -67,12 +67,12 @@ const AuthorViewer = ({isAddBookPanelActive}) => {
                 <img src={AuthorImage} className='h-full max-md:w-24 w-60' />
                 <div className='flex flex-col gap-5'>
                     <div>
-                        <input value={author?.firstName} disabled={!isUpdateModeOn} onChange={e=>setAuthor({...author,firstName:e.target.value})} type='text' className='text-7xl max-md:text-4xl max-md:text-center w-full bg-transparent capitalize outline-none font-bold' />
-                        <input value={author?.lastName} disabled={!isUpdateModeOn} onChange={e=>setAuthor({...author,lastName:e.target.value})} type='text' className='text-7xl max-md:text-4xl max-md:text-center w-full bg-transparent capitalize outline-none font-bold' />
+                        <input value={author?.firstName} disabled={!isUpdateModeOn} onChange={e=>setAuthor({...author,firstName:e.target.value})} type='text' className={`text-7xl max-md:text-4xl max-md:text-center w-full bg-transparent capitalize outline-none font-bold ${isUpdateModeOn?'border-b-2 border-black':''}`} />
+                        <input value={author?.lastName} disabled={!isUpdateModeOn} onChange={e=>setAuthor({...author,lastName:e.target.value})} type='text' className={`text-7xl max-md:text-4xl max-md:text-center w-full bg-transparent capitalize outline-none font-bold ${isUpdateModeOn?'border-b-2 border-black':''}`} />
                     </div>
                     <div className='font-light max-md:text-xs flex flex-col max-md:items-center text-center'>
-                        <p className='flex items-center gap-3'><MdEmail /> <input disabled={!isUpdateModeOn} className='bg-transparent outline-none' value={author?.email} type="text" onChange={e=>setAuthor({...author,email:e.target.value})} /></p>
-                        <p className='flex items-center gap-3'><MdCall /> <input disabled={!isUpdateModeOn} className='bg-transparent outline-none' value={author?.contactNo} type="text" onChange={e=>setAuthor({...author,contactNo:e.target.value})} /></p>
+                        <p className='flex items-center gap-3'><MdEmail /> <input disabled={!isUpdateModeOn} className={`bg-transparent outline-none ${isUpdateModeOn?'border-b-[1px] border-black':''}`} value={author?.email} type="text" onChange={e=>setAuthor({...author,email:e.target.value})} /></p>
+                        <p className='flex items-center gap-3'><MdCall /> <input disabled={!isUpdateModeOn} className={`bg-transparent outline-none ${isUpdateModeOn?'border-b-[1px] border-black':''}`} value={author?.contactNo} type="text" onChange={e=>setAuthor({...author,contactNo:e.target.value})} /></p>
                     </div>
                 </div>
             </div>
