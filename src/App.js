@@ -9,6 +9,7 @@ import AddAuthorPanel from './component/author/AddAuthorPanel';
 import axios from 'axios';
 import AuthorViewer from './component/author/AuthorViewer';
 import BookViewer from './component/book/BookViewer';
+import LoginRegister from './component/LoginRegister';
 
 export const AppContext = createContext();
 
@@ -53,6 +54,8 @@ function App() {
         <Route path='/books' element={<Books />} />
         <Route path='/authors/:email' element={<AuthorViewer isAddBookPanelActive={isAddBookPanelActive} />} />
         <Route path='/books/:bookIsbn' element={<BookViewer />} />
+        <Route path='/login' element={<LoginRegister component={"Login"} />} />
+        <Route path='/register' element={<LoginRegister component={"Register"} />} />
       </Routes> 
       {isAddAuthorPanelActive?<AddAuthorPanel />:null}
     </AppContext.Provider>

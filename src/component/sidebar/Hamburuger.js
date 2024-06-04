@@ -6,6 +6,7 @@ import { MdSupervisorAccount } from 'react-icons/md';
 import { IoBookSharp } from 'react-icons/io5';
 import { HiUserAdd } from 'react-icons/hi';
 import { ImCross } from 'react-icons/im';
+import { LoginButton, RegisterButton } from './SideBar';
 
 const Hamburuger = ({setHamburgurActive}) => {
 
@@ -31,7 +32,10 @@ const Hamburuger = ({setHamburgurActive}) => {
                 <li className={getNavItemClass('/books')} onClick={() => navigate('/books')}>Books</li>
             </ul>
         </div>
-        <div onClick={()=>setLogin(!login)} className='bg-black text-white flex items-center justify-center navigation-list-item'>{login?"Logout":"Login"}</div>
+        <div className='flex flex-col gap-4'>
+          <RegisterButton />
+          <LoginButton />
+        </div>
     </div>
   )
 }
