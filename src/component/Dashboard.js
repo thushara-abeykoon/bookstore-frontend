@@ -72,7 +72,6 @@ const SearchBar = () => {
                 searchedBooks.map(book=><BookCard key={book.isbn} book={book} />)}
             </div>
         </div>
-
         :null}
     </div>
   )

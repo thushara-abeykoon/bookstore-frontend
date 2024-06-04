@@ -1,16 +1,12 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../App';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { FaHome } from 'react-icons/fa';
-import { MdSupervisorAccount } from 'react-icons/md';
-import { IoBookSharp } from 'react-icons/io5';
-import { HiUserAdd } from 'react-icons/hi';
 import { ImCross } from 'react-icons/im';
 import { LoginButton, RegisterButton } from './SideBar';
 
 const Hamburuger = ({setHamburgurActive}) => {
 
-    const {handleAddAuthorPanel, handleAddBookPanel, login, setLogin} = useContext(AppContext);
+    const {handleAddAuthorPanel, handleAddBookPanel, login} = useContext(AppContext);
     const navigate = useNavigate();
     const currentRoute = useLocation();
 
