@@ -1,4 +1,13 @@
 @Layer components {
+
+    .login-panel-input{
+        width: 70%;
+        border: 2px solid black !important;
+        padding: 10px 20px !important;
+        font-size: large !important;
+        border-radius: 10px;
+    }
+
     .navigation-list-item {
         /* background-color: black; */
         font-weight: bold;
