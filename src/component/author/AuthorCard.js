@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import UserImage from '../../assets/219970.png'
+import React, { useContext, useEffect, useState } from 'react'
+import AuthorImage from '../../assets/219970.png'
 import { FaBookOpen, FaHeart } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { AppUserContext } from '../../AppUser';
+import { bookGetByAuthorEmailUrl } from '../../service/apiUrl';
 
 const AuthorCard = ({email, firstName, lastName}) => {
+
+    const { requestHandler } = useContext(AppUserContext);
 
     const navigate = useNavigate();
     const [bookCount, setBookCount] = useState(0);
@@ -23,19 +26,15 @@ const AuthorCard = ({email, firstName, lastName}) => {
     }
 
     const fetchBookCount = async(email) => {
-      await axios.get(`http://localhost:8080/api/v1/book/getByAuthor/${email}`)
-      .then(res=>{
+      await requestHandler?.getReq(bookGetByAuthorEmailUrl(email), (res)=>{
         setBookCount(res.data.length);
         calculateTotalLikes(res.data);
-      })
-      .catch(err=>console.error(err));
-
-      
+      })      
     }
 
   return (
     <div className='bg-white w-64 max-md:w-32 shadow-xl rounded-lg pt-3 max-md:pb-4 pb-10 flex flex-col items-center gap-4 px-5 cursor-pointer' onClick={() => navigate(`/authors/${email}`)} >
-        <img src={UserImage} className='w-full' />
+        <img alt='author' src={AuthorImage} className='w-full' />
         <div className='flex flex-col items-center gap-3 w-full'>
             <h3 className='text-2xl text-center max-md:text-base font-bold capitalize'>{firstName} {lastName}</h3>
             <div className='flex justify-around w-full'>

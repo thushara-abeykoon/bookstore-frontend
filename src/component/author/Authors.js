@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import AuthorCard from './AuthorCard';
-import { AppContext } from '../../App';
+import { AppUserContext } from '../../AppUser';
 
 const Authors = () => {
   
-  const {authors} = useContext(AppContext);
-  const {fetchAuthors} = useContext(AppContext);
+  const {authors} = useContext(AppUserContext);
+  const {fetchAuthors} = useContext(AppUserContext);
 
   useEffect(() => {
       fetchAuthors();

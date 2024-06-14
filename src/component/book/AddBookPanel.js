@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useRef } from 'react'
-import { AppContext } from '../../App'
+import { AppUserContext } from '../../AppUser'
 import { ImCross } from 'react-icons/im';
 import { RiImageAddFill } from 'react-icons/ri';
-import axios from 'axios';
+import { BOOK_REGISTER_URL } from '../../service/apiUrl';
 
 const AddBookPanel = ({author, fetchBooks, handleAddBookPanel}) => {
 
@@ -10,26 +10,21 @@ const AddBookPanel = ({author, fetchBooks, handleAddBookPanel}) => {
   const titleRef = useRef(null);
   const categoryRef = useRef(null); 
 
+  const { requestHandler } = useContext(AppUserContext);
+
   useEffect(() => {
     return () => {
       fetchBooks();
     }
-  },[]);
+  },[fetchBooks]);
   
   const addNewBook = async(isbn, title, category) => {
     console.log(author);
-    const data = {
-      isbn,
-      title,
-      category,
-      author
-    }
-    await axios.post("http://localhost:8080/api/v1/book/register",data)
-    .then((response) => {
-      console.log(response.data);
+    const data = { isbn, title, category, author }
+    await requestHandler?.postReq(BOOK_REGISTER_URL, data, (res) => {
+      console.log(res.data);
       handleAddBookPanel(false);
     })
-    .catch(err=>console.error(err))
   }
 
   const handleSubmit = (e) => {

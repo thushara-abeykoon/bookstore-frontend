@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { AppContext } from '../../App';
+import { AppUserContext } from '../../AppUser';
 import BookCard from './BookCard';
 import { MdPlayArrow } from 'react-icons/md';
 import { IoIosArrowForward } from 'react-icons/io';
 
 const Books = () => {
   const [bookCategories, setBookCategories] = useState([]);
-  const {fetchBooks, books} = useContext(AppContext);
+  const {fetchBooks, books} = useContext(AppUserContext);
   useEffect(()=>{
     fetchBooks(); 
   },[]);

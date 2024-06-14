@@ -2,23 +2,24 @@ import React, { useContext, useEffect, useState } from 'react'
 import { FaSearch } from "react-icons/fa";
 import BookCard from './book/BookCard';
 import AuthorCard from './author/AuthorCard';
-import { AppContext } from '../App';
-import axios from 'axios';
+import { AppUserContext } from '../AppUser';
+import { bookSearchByIsbnUrl } from '../service/apiUrl';
 
 const Dashboard = () => {
-    const {authors, books, login} = useContext(AppContext);
+    const {authors, books, currentUser, fetchAuthors} = useContext(AppUserContext);
     const [mostLikedBooks, setMostLikedBooks] = useState([]);
     useEffect(()=>{
+        fetchAuthors();
         const sortedBooks = books;
         sortedBooks.sort((a,b)=>b.likeCount- a.likeCount);
         setMostLikedBooks(sortedBooks.slice(0,4));
-    },[books])
+    },[books, fetchAuthors])
     
 
   return (
     <div className='md:float-right md:w-5/6 max-md:w-full px-10 py-10 flex flex-col gap-20'>
         <div className='flex-box gap-20 max-md:flex-col-reverse max-md:gap-10'>
-            <h2 className='text-5xl font-bold font-sans'>Welcome {login?"Admin":"User"}!</h2>
+            <h2 className='text-5xl font-bold font-sans capitalize'>Welcome {currentUser?.username}!</h2>
             <SearchBar />
         </div>
         <div className='flex flex-col w-full items-start gap-10'>
@@ -47,10 +48,12 @@ const SearchBar = () => {
     const [searchActive, setSearchActive] = useState(false);
     const [searchedBooks, setSearchedBooks] = useState([]);
 
+    const { requestHandler } = useContext(AppUserContext);
+
     const searchBooks = async(bookIsbn) => {
-        await axios.get(`http://localhost:8080/api/v1/book/search/${bookIsbn}`)
-        .then(res=>setSearchedBooks(res.data))
-        .catch(err=>console.error(err));
+        await requestHandler.getReq(bookSearchByIsbnUrl(bookIsbn), (res)=> {
+            setSearchedBooks(res.data);
+        })
     }
 
   return (
