@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../../App';
+import { AppUserContext } from '../../AppUser';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ImCross } from 'react-icons/im';
-import { LoginButton, RegisterButton } from './SideBar';
+import { LogoutButton } from './SideBar';
 
 const Hamburuger = ({setHamburgurActive}) => {
 
-    const {handleAddAuthorPanel, handleAddBookPanel, login} = useContext(AppContext);
+    const {handleAddAuthorPanel, handleAddBookPanel, login} = useContext(AppUserContext);
     const navigate = useNavigate();
     const currentRoute = useLocation();
 
@@ -16,7 +16,7 @@ const Hamburuger = ({setHamburgurActive}) => {
 
 
   return (
-    <div className='fixed top-0 right-0 w-3/4 h-screen bg-white bg-opacity-40 backdrop-blur-md flex flex-col justify-between py-10'>
+    <div className='fixed top-0 right-0 w-3/4 h-screen bg-white bg-opacity-40 backdrop-blur-md flex flex-col justify-between py-10 z-10 '>
         <div className='flex flex-col gap-5'>
             <div className='px-10 flex justify-end text-black'><ImCross onClick={()=>{setHamburgurActive(false)}} className='cursor-pointer'/></div>
              <ul className='flex flex-col gap-4'>
@@ -29,8 +29,7 @@ const Hamburuger = ({setHamburgurActive}) => {
             </ul>
         </div>
         <div className='flex flex-col gap-4'>
-          <RegisterButton />
-          <LoginButton />
+          <LogoutButton component={"Logout"} />
         </div>
     </div>
   )
